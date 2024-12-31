@@ -43,7 +43,7 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
 
 
 # Streamlit App
-st.title("Personalized Image Generator")
+st.title("Generate Personalized New Year Greeting")
 
 # Collect user input for the name
 st.subheader("Enter Your Name")
@@ -75,3 +75,13 @@ if st.button("Generate Image"):
         )
     else:
         st.error("Please enter at least your first and last name.")
+
+# Footer section
+st.markdown(
+    """
+    <div style="text-align: center; margin-top: 50px; font-size: 14px;">
+        <p><i>Powered by Ivy Professional School</i></p>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
