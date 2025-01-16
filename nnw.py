@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 import io
 
 # Predefined image path (You can replace it with your own image path)
-PREDEFINED_IMAGE_PATH = "NYFS.jpg"
+PREDEFINED_IMAGE_PATH = "RD.jpg"
 DATA_TYPE_PATH = "Montserrat-Regular.ttf"
 
 def add_name_to_image(image_path, first_name, middle_name, last_name):
@@ -29,7 +29,7 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
     
     # Calculate the text position to center it
     text_x = (image_width - text_width) // 2
-    text_y = 710
+    text_y = 752
     text_position = (text_x, text_y)
     
     offsets = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # Adjust for more boldness if needed
@@ -43,7 +43,7 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
 
 
 # Streamlit App
-st.title("Generate Personalized New Year Greeting")
+st.title("Generate Personalized Republic Day Greeting")
 
 # Collect user input for the name
 st.subheader("Enter Your Name")
