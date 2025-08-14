@@ -7,38 +7,43 @@ PREDEFINED_IMAGE_PATH = "RD.jpg"
 DATA_TYPE_PATH = "Montserrat-Regular.ttf"
 
 def add_name_to_image(image_path, first_name, middle_name, last_name):
+    # Convert all name parts to Title Case
+    first_name = first_name.title()
+    middle_name = middle_name.title()
+    last_name = last_name.title()
+
     # Open the image
     image = Image.open(image_path)
-    
-    # Create a drawing context
     draw = ImageDraw.Draw(image)
-    
-    # Define the font (ensure Montserrat font file is in your directory)
+
+    # Define the font
     font = ImageFont.truetype(DATA_TYPE_PATH, 60)
-    
+
     # Concatenate the full name
-    full_name = f"{first_name} {middle_name} {last_name}"
-    
+    full_name = " ".join([first_name, middle_name, last_name]).strip()
+
     # Get the size of the image
     image_width, image_height = image.size
-    
+
     # Calculate the bounding box of the text
     text_bbox = draw.textbbox((0, 0), full_name, font=font)
     text_width = text_bbox[2] - text_bbox[0]
     text_height = text_bbox[3] - text_bbox[1]
-    
-    # Calculate the text position to center it
+
+    # Position above "Data & AI Enthusiast"
+    enthusiast_y = int(image_height * 0.77)  # Reference position for that text
     text_x = (image_width - text_width) // 2
-    text_y = 752
-    text_position = (text_x, text_y)
-    
-    offsets = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # Adjust for more boldness if needed
+    text_y = enthusiast_y - text_height - 10  # 10px gap
+
+    # Draw outline for visibility
+    offsets = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     for offset in offsets:
-        draw.text((text_position[0] + offset[0], text_position[1] + offset[1]),
-                  full_name, fill="White", font=font)
-    # # Add text to the image
-    # draw.text(text_position, full_name, fill="White", font=font)
-    
+        draw.text((text_x + offset[0], text_y + offset[1]),
+                  full_name, fill="black", font=font)
+
+    # Draw main white text
+    draw.text((text_x, text_y), full_name, fill="white", font=font)
+
     return image
 
 
@@ -57,15 +62,15 @@ if st.button("Generate Image"):
         personalized_image = add_name_to_image(
             PREDEFINED_IMAGE_PATH, first_name, middle_name, last_name
         )
-        
+
         # Display the image
         st.image(personalized_image, caption="Your Personalized Image")
-        
+
         # Convert image to bytes for download
         img_byte_arr = io.BytesIO()
         personalized_image.save(img_byte_arr, format="PNG")
         img_byte_arr = img_byte_arr.getvalue()
-        
+
         # Provide a download link
         st.download_button(
             label="Download Image",
@@ -82,6 +87,6 @@ st.markdown(
     <div style="text-align: center; margin-top: 50px; font-size: 14px;">
         <p><i>Powered by Ivy Professional School</i></p>
     </div>
-    """, 
+    """,
     unsafe_allow_html=True
 )
