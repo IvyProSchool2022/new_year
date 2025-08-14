@@ -39,10 +39,10 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
     offsets = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     for offset in offsets:
         draw.text((text_x + offset[0], text_y + offset[1]),
-                  full_name, fill="black", font=font)
+                  full_name, fill="#0465B5", font=font)
 
     # Draw main white text
-    draw.text((text_x, text_y), full_name, fill="black", font=font)
+    draw.text((text_x, text_y), full_name, fill="#0465B5", font=font)
 
     return image
 
@@ -90,4 +90,5 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
