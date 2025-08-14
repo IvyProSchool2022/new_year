@@ -42,7 +42,7 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
                   full_name, fill="black", font=font)
 
     # Draw main white text
-    draw.text((text_x, text_y), full_name, fill="white", font=font)
+    draw.text((text_x, text_y), full_name, fill="black", font=font)
 
     return image
 
@@ -90,3 +90,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
