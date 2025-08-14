@@ -31,7 +31,7 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
     text_height = text_bbox[3] - text_bbox[1]
 
     # Position above "Data & AI Enthusiast"
-    enthusiast_y = int(image_height * 0.77)  # Reference position for that text
+    enthusiast_y = int(image_height * 0.75)  # Reference position for that text
     text_x = (image_width - text_width) // 2
     text_y = enthusiast_y - text_height - 10  # 10px gap
 
@@ -90,5 +90,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
