@@ -48,7 +48,7 @@ def add_name_to_image(image_path, first_name, middle_name, last_name):
 
 
 # Streamlit App
-st.title("Generate Personalized Republic Day Greeting")
+st.title("Generate Personalized Independence Day Greeting")
 
 # Collect user input for the name
 st.subheader("Enter Your Name")
@@ -90,6 +90,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 
 
